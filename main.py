@@ -56,6 +56,8 @@ def create_student(student_id: int, student: Student):
     students[student_id] = student
     return students[student_id]
 
+# Put Method
+
 
 @app.put("/update_student/{student_id}")
 def update_student(student_id: int, Student: UpdateStudent):
@@ -69,6 +71,8 @@ def update_student(student_id: int, Student: UpdateStudent):
         students[student_id].age = student.age
 
     return students[student_id]
+
+# Delete Method
 
 
 @app.delete("/delete_student/{student_id}")
