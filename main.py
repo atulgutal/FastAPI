@@ -16,6 +16,11 @@ class Student(BaseModel):
     name: str
     age: int
 
+
+class UpdateStudent(BaseModel):
+    name: Optional[str] = None
+    age: Optional[int] = None
+
 # Get method
 
 
@@ -49,4 +54,18 @@ def create_student(student_id: int, student: Student):
         return {"Error": "Student Exists"}
 
     students[student_id] = student
+    return students[student_id]
+
+
+@app.put("/update_student/{student_id}")
+def update_student(student_id: int, Student: UpdateStudent):
+    if student_id not in students:
+        return {"Error": "Student does not exists"}
+
+    if student.name != None:
+        students[student_id].name = student.name
+
+    if student.age != None:
+        students[student_id].age = student.age
+
     return students[student_id]
